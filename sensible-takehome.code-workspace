@@ -1,0 +1,22 @@
+{
+  "folders": [
+    {
+      "name": "sensible-takehome",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "eslint.enable": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "tailwindCSS.experimental.configFile": "tailwind.config.cjs"
+  },
+  "extensions": {
+    "recommendations": [
+      "vscode-icons-team.vscode-icons",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
+}
