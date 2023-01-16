@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Layout from "./Layout";
-import Header from "./Header";
-import NearbyPlaces from "./NearbyPlaces";
+import Layout from "./components/Layout";
+import Header from "./components/Header";
+import NearbyPlaces from "./components/NearbyPlaces";
 
 const queryClient = new QueryClient();
 
