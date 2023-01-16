@@ -12,12 +12,14 @@
     "tailwindCSS.experimental.configFile": "tailwind.config.cjs",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
-    },
+    }
   },
-  "recommendations": [
-    "vscode-icons-team.vscode-icons",
-    "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "dbaeumer.vscode-eslint"
-  ]
+  "extensions": {
+    "recommendations": [
+      "vscode-icons-team.vscode-icons",
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
 }
