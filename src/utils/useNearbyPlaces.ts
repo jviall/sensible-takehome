@@ -1,6 +1,7 @@
 import { RefObject, useMemo } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { IPlace } from "./types";
 
 const googleLoader = new Loader({
   apiKey: "AIzaSyDIb6tuC5IBX5yf8pYBMs_hLkZicqDHZ9k",
@@ -8,13 +9,12 @@ const googleLoader = new Loader({
   libraries: ["places"],
 });
 
-type Place = google.maps.places.PlaceResult;
 async function getNearbyPlaces(
   service: google.maps.places.PlacesService | null,
   center: google.maps.LatLngLiteral,
   searchTerm: string
-): Promise<Place[]> {
-  return new Promise<Place[]>((resolve, reject) => {
+): Promise<IPlace[]> {
+  return new Promise<IPlace[]>((resolve, reject) => {
     if (service === null) return reject("Google Service undefined");
     service.nearbySearch(
       {
@@ -22,7 +22,7 @@ async function getNearbyPlaces(
         rankBy: google.maps.places.RankBy.DISTANCE,
         keyword: searchTerm,
       },
-      (places) => resolve(places as Place[])
+      (places) => resolve(places as IPlace[])
     );
   });
 }
@@ -31,7 +31,7 @@ export default function useNearbyPlaces(
   mapEl: RefObject<HTMLDivElement>,
   center: google.maps.LatLngLiteral,
   searchTerm: string
-): UseQueryResult<Place[], Error> {
+): UseQueryResult<IPlace[], Error> {
   // re-use the map/service of each location;
   const service = useMemo(
     () =>
@@ -45,7 +45,7 @@ export default function useNearbyPlaces(
     [mapEl]
   );
 
-  const nearbyPlaces = useQuery<Place[], Error>(
+  const nearbyPlaces = useQuery<IPlace[], Error>(
     ["nearbyPlaces", { center, searchTerm }],
     async () => getNearbyPlaces(await service, center, searchTerm),
     { enabled: searchTerm.length > 0 }
