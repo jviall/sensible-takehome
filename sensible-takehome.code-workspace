@@ -9,14 +9,15 @@
     "eslint.enable": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "tailwindCSS.experimental.configFile": "tailwind.config.cjs"
+    "tailwindCSS.experimental.configFile": "tailwind.config.cjs",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
   },
-  "extensions": {
-    "recommendations": [
-      "vscode-icons-team.vscode-icons",
-      "esbenp.prettier-vscode",
-      "bradlc.vscode-tailwindcss",
-      "dbaeumer.vscode-eslint"
-    ]
-  }
+  "recommendations": [
+    "vscode-icons-team.vscode-icons",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint"
+  ]
 }
