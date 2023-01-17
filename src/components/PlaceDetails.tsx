@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { IPlaceDetails } from "../utils/types";
 import usePlaceDetails, { getPlaceDetails } from "../utils/usePlaceDetails";
 import usePlacesService from "../utils/usePlacesService";
@@ -14,10 +14,9 @@ interface Props {
 }
 
 export default function PlaceDetails({ placeId }: Props) {
-  const mapEl = useRef<HTMLDivElement>(null);
   const [fetchEnabled, setFetchEnabled] = useState(false);
   const queryClient = useQueryClient();
-  const placesService = usePlacesService(mapEl);
+  const placesService = usePlacesService();
   const { data } = usePlaceDetails(placesService, placeId, fetchEnabled);
   const {
     formatted_address: address,
@@ -87,7 +86,6 @@ export default function PlaceDetails({ placeId }: Props) {
           </>
         )}
       </div>
-      <div className="hidden" ref={mapEl} />
     </details>
   );
 }
