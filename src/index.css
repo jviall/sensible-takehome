@@ -27,6 +27,19 @@ body {
   color: #171717;
 }
 
+a {
+  color: #38bdf8;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+a:hover,
+a:visited,
+a:active {
+  color: #0284c7;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #18181b;
