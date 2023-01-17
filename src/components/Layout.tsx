@@ -22,8 +22,8 @@ export default function Layout({ header, main }: Props) {
         {main}
       </div>
       {/* content borders */}
-      <div className="h-full col-start-1 border-r-[1px] border-stone-300 dark:border-zinc-700 row-start-1 row-span-3 justify-self-end" />
-      <div className="h-full col-start-3 border-l-[1px] border-stone-300 dark:border-zinc-700 row-start-1 row-span-3 justify-self-start" />
+      <div className="h-full col-start-1 border-r-[1px] border-slate-300 dark:border-zinc-700 row-start-1 row-span-3 justify-self-end" />
+      <div className="h-full col-start-3 border-l-[1px] border-slate-300 dark:border-zinc-700 row-start-1 row-span-3 justify-self-start" />
     </div>
   );
 }
