@@ -45,7 +45,7 @@ export default function PlaceDetails({ placeId }: Props) {
         Detailed Info
       </summary>
       {/* expanded details */}
-      <div className="grid grid-cols-2 gap-x-2">
+      <div className="grid grid-cols-2 gap-y-2">
         {address && (
           <>
             <div className="font-semibold text-sm col-start-1 row-start-1">
@@ -59,7 +59,12 @@ export default function PlaceDetails({ placeId }: Props) {
             <div className="font-semibold text-sm col-start-1 row-start-2">
               Phone Number
             </div>
-            <div className="text-sm col-start-2 row-start-2">{phoneNumber}</div>
+            <a
+              className="text-sm col-start-2 row-start-2"
+              href={`tel:+${phoneNumber}`}
+            >
+              {phoneNumber}
+            </a>
           </>
         )}
         {hours && (
@@ -68,7 +73,7 @@ export default function PlaceDetails({ placeId }: Props) {
               Hours
             </div>
             <div className="text-sm col-start-2 row-start-3">
-              {hours?.join(", ") ?? "n/a"}
+              {hours.join(", ")}
             </div>
           </>
         )}
