@@ -1,26 +1,9 @@
-import { RefObject, useEffect, useState } from "react";
-import { Loader } from "@googlemaps/js-api-loader";
-import useMapEl from "./useMapEl";
+import { createContext, useContext } from "react";
 
-const googleLoader = new Loader({
-  apiKey: "AIzaSyDIb6tuC5IBX5yf8pYBMs_hLkZicqDHZ9k",
-  version: "weekly",
-  libraries: ["places"],
-});
+const PlacesServiceContext =
+  createContext<google.maps.places.PlacesService | null>(null);
 
+export const PlacesServiceProvider = PlacesServiceContext.Provider;
 export default function usePlacesService() {
-  const [service, setService] = useState<google.maps.places.PlacesService>();
-  const mapEl = useMapEl();
-
-  useEffect(() => {
-    googleLoader
-      .load()
-      .then((google) =>
-        mapEl.current
-          ? setService(new google.maps.places.PlacesService(mapEl.current))
-          : null
-      );
-  }, [mapEl.current]);
-
-  return service;
+  return useContext(PlacesServiceContext) as google.maps.places.PlacesService;
 }

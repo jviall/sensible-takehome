@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { IPlaceDetails } from "./types";
+import usePlacesService from "./usePlacesService";
 
 export async function getPlaceDetails(
   service: google.maps.places.PlacesService | undefined,
@@ -21,10 +22,10 @@ export async function getPlaceDetails(
 }
 
 export default function usePlaceDetails(
-  service: google.maps.places.PlacesService | undefined,
   placeId: string,
   enabled = true
 ) {
+  const service = usePlacesService();
   return useQuery({
     queryKey: ["getDetails", placeId],
     queryFn: () => getPlaceDetails(service, placeId),
