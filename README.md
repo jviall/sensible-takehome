@@ -14,7 +14,7 @@ yarn dev
 
 ## Preview Production
 ```
-yarn build && yarn Preview
+yarn build && yarn preview
 ```
 
 ## Built with
