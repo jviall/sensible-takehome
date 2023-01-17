@@ -20,7 +20,7 @@ export default function Select({ value, onChange, options, label }: Props) {
         id={id}
         onChange={onChange}
         value={value}
-        className="rounded-md p-1"
+        className="rounded-md p-1 bg-white dark:bg-neutral-700"
       >
         {options.map((opt) => (
           <option value={JSON.stringify(opt)} key={opt.name}>

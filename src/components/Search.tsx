@@ -17,7 +17,7 @@ export default function Search({ value, onChange, label }: Props) {
         type="text"
         value={value}
         onChange={onChange}
-        className="bg-neutral-700 px-2 py-1 rounded-md"
+        className="bg-white dark:bg-neutral-700 px-2 py-1 rounded-md"
         placeholder="Search"
       />
     </div>
