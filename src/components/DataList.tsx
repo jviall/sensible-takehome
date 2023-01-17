@@ -14,7 +14,7 @@ export default function DataList<T = unknown>({
 }: Props<T>) {
   return (
     <article className="self-center mt-6 w-full flex flex-col gap-4">
-      <h2 className={"text-lg text-center"}>{label}</h2>
+      <h2 className="text-lg text-center">{label}</h2>
       {data && (
         <ul className="w-full">
           {data.map((item, index) => (
