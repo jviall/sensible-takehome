@@ -25,7 +25,7 @@ export default function PlaceCard({ place }: Props) {
         <span>{place.rating}</span>
         <MdStar aria-label="Average Rating" />
       </div>
-      <div className="row-start-2 flex flex-col">
+      <div className="row-start-2 col-span-2 flex flex-col">
         <span className="font-semibold">Address</span>
         <span>{place.vicinity}</span>
       </div>

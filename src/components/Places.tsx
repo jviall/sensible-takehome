@@ -1,7 +1,6 @@
 import DataList from "./DataList";
 import PlaceCard from "./PlaceCard";
 import useNearbyPlaces from "../utils/useNearbyPlaces";
-import usePlacesService from "../utils/usePlacesService";
 
 interface Props {
   keyword: string;
@@ -9,8 +8,7 @@ interface Props {
 }
 
 export default function ({ keyword, location }: Props) {
-  const placesService = usePlacesService();
-  const { data } = useNearbyPlaces(placesService, location, keyword);
+  const { data } = useNearbyPlaces(location, keyword);
 
   return (
     <DataList

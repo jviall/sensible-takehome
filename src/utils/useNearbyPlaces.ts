@@ -1,5 +1,6 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { IPlace } from "./types";
+import usePlacesService from "./usePlacesService";
 
 async function getNearbyPlaces(
   service: google.maps.places.PlacesService | undefined,
@@ -21,10 +22,10 @@ async function getNearbyPlaces(
 }
 
 export default function useNearbyPlaces(
-  service: google.maps.places.PlacesService | undefined,
   center: google.maps.LatLngLiteral,
   keyword: string
 ): UseQueryResult<IPlace[]> {
+  const service = usePlacesService();
   const nearbyPlaces = useQuery({
     queryKey: ["nearbyPlaces", { center, keyword }],
     queryFn: async () => getNearbyPlaces(service, center, keyword),

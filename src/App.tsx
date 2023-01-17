@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useState } from "react";
 import { QueryErrorResetBoundary } from "@tanstack/react-query";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
@@ -10,10 +10,8 @@ import Places from "./components/Places";
 import Loading from "./components/Loading";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
-import useMapEl from "./utils/useMapEl";
 
 function App() {
-  const mapEl = useMapEl();
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState<ILocation>(locations[0]);
   const handleLocationChange: React.ChangeEventHandler<HTMLSelectElement> = (
@@ -53,7 +51,6 @@ function App() {
           </div>
         }
       />
-      <div id="map" className="hidden" ref={mapEl} />
     </>
   );
 }
