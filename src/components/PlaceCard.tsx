@@ -1,4 +1,8 @@
+import { Suspense } from "react";
+import { QueryErrorResetBoundary } from "@tanstack/react-query";
+import { ErrorBoundary } from "react-error-boundary";
 import { MdStar } from "react-icons/md";
+import ErrorFallback from "./ErrorFallback";
 import { IPlace } from "../utils/types";
 import PlaceDetails from "./PlaceDetails";
 
@@ -25,7 +29,22 @@ export default function PlaceCard({ place }: Props) {
         <span className="font-semibold">Address</span>
         <span>{place.vicinity}</span>
       </div>
-      <PlaceDetails placeId={place.place_id as string} />
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary
+            onReset={reset}
+            fallbackRender={(_p) => (
+              <div className="row-start-3">
+                <ErrorFallback {..._p} label="Error fetching details" />
+              </div>
+            )}
+          >
+            <Suspense>
+              <PlaceDetails placeId={place.place_id as string} />
+            </Suspense>
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
     </section>
   );
 }
