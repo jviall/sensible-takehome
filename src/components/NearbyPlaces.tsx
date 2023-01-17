@@ -3,8 +3,9 @@ import Select from "./Select";
 import useNearbyPlaces from "../utils/useNearbyPlaces";
 import { locations } from "../utils/constants";
 import { ILocation } from "../utils/types";
-import PlaceCard from "./PlaceCard";
 import Search from "./Search";
+import DataList from "./DataList";
+import PlaceCard from "./PlaceCard";
 
 interface Props {}
 export default function NearbyPlaces({}: Props) {
@@ -20,44 +21,38 @@ export default function NearbyPlaces({}: Props) {
   const handleLocationChange: React.ChangeEventHandler<HTMLSelectElement> = (
     e
   ) => {
-    console.log(JSON.parse(e.target.value));
     setLocation(JSON.parse(e.target.value) as ILocation);
   };
   return (
-    <div className=" w-full flex flex-col items-center">
+    <div className="w-full grid grid-cols-1 grid-rows=[min-content_1fr] items-center gap-2">
       <div className="w-full flex flex-col items-stretch md:flex-row md:items-end md:justify-center md:space-x-2">
         <Select
           value={JSON.stringify(location)}
           onChange={handleLocationChange}
           options={locations}
-          label="Select a Location"
+          label="Location"
         />
         <Search
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          label={`Find in ${location.name}`}
+          label={`Search in ${location.name}`}
         />
       </div>
-      <div className="self-center my-2 w-full flex">
-        {error && <pre>{JSON.stringify(error)}</pre>}
-        {isLoading && search?.length ? (
-          <span className="text-xl self-center text-center w-full">
-            loading...
-          </span>
-        ) : data && data.length ? (
-          <ul className="w-full">
-            {data?.map((place) => (
-              <li key={place.place_id} className="mb-4">
-                <PlaceCard place={place} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <span className="text-lg self-center text-center w-full">
-            {!search?.length ? "Search for a place." : "No results."}
-          </span>
-        )}
-      </div>
+
+      <DataList
+        data={data ?? []}
+        getItemKey={(item) => String(item.place_id)}
+        label={
+          !search?.length
+            ? "Search for a place."
+            : isLoading
+            ? "Loading..."
+            : `${data?.length ?? 0} results.`
+        }
+      >
+        {(item) => <PlaceCard place={item} />}
+      </DataList>
+
       <div id="map" className="hidden" ref={mapEl} />
     </div>
   );

@@ -1,23 +1,29 @@
+import { MdStar } from "react-icons/md";
 import { IPlace } from "../utils/types";
 
 interface Props {
   place: IPlace;
+  label?: string;
 }
 export default function PlaceCard({ place }: Props) {
   return (
-    <div className="m-auto grid grid-rows-3 border-2 rounded-md p-2 w-full min-w-min max-w-lg">
-      <h1 className="text-lg font-semibold">{place.name}</h1>
-      <span className="row-start-1">{place.rating}</span>
-      <span>{place.vicinity}</span>
-      {/* <pre>
-        {"available keys:\n"}
-        {Object.entries(place)
-          .reduce<string[]>(
-            (acc, [k, v]) => acc.concat(v ? [`${k}: ${String(v)}`] : []),
-            []
-          )
-          .join("\n")}
-      </pre> */}
-    </div>
+    <section
+      className={`
+    m-auto grid grid-rows-2 gap-2 items-start
+    border-2 rounded-md p-6 w-full min-w-min max-w-lg
+    bg-white border border-gray-200 rounded-lg drop-shadow-md dark:bg-zinc-800 dark:border-zinc-700`}
+    >
+      <div className="row-start-1">
+        <h2 className="text-lg font-semibold">{place.name}</h2>
+      </div>
+      <div className="row-start-1 flex items-center justify-self-end">
+        <span>{place.rating}</span>
+        <MdStar aria-label="Average Rating" />
+      </div>
+      <div className="row-start-2 flex flex-col">
+        <span className="font-semibold">Address</span>
+        <span>{place.vicinity}</span>
+      </div>
+    </section>
   );
 }
