@@ -6,17 +6,15 @@ import { ILocation } from "../utils/types";
 import Search from "./Search";
 import DataList from "./DataList";
 import PlaceCard from "./PlaceCard";
+import usePlacesService from "../utils/usePlacesService";
 
 interface Props {}
 export default function NearbyPlaces({}: Props) {
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState<ILocation>(locations[0]);
   const mapEl = useRef<HTMLDivElement>(null);
-  const { data, isLoading, error } = useNearbyPlaces(
-    mapEl,
-    location.center,
-    search
-  );
+  const placesService = usePlacesService(mapEl);
+  const { data, isLoading } = useNearbyPlaces(placesService, location.center, search);
 
   const handleLocationChange: React.ChangeEventHandler<HTMLSelectElement> = (
     e
