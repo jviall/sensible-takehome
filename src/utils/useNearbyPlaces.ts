@@ -11,6 +11,7 @@ async function getNearbyPlaces(
     service.nearbySearch(
       {
         location: center,
+        radius: 50000, // 50km
         rankBy: google.maps.places.RankBy.PROMINENCE,
         keyword: keyword,
       },
