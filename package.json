@@ -10,7 +10,9 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest --run",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "e2e": "npx playwright test",
+    "lint": "npx eslint --ext .ts,tsx src"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
@@ -21,6 +23,7 @@
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
