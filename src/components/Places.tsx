@@ -7,7 +7,7 @@ interface Props {
   location: google.maps.LatLngLiteral;
 }
 
-export default function ({ keyword, location }: Props) {
+export default function Places({ keyword, location }: Props) {
   const { data } = useNearbyPlaces(location, keyword);
 
   return (

@@ -6,7 +6,7 @@ import usePlacesService from "../utils/usePlacesService";
 
 const extractHostname = (str: string) =>
   str.match(
-    new RegExp(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/)
+    new RegExp(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/)
   )?.[0] ?? str;
 
 interface Props {

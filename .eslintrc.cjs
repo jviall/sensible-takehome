@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   env: {
     browser: true,
     es2021: true,
@@ -18,5 +18,8 @@ export default {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  rules: {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+  },
 };
