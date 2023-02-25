@@ -9,7 +9,7 @@ export default function Layout({ header, main }: Props) {
     <div
       id="container"
       className={`
-        h-full w-full grid justify-items-center items-start
+        w-full grid justify-items-center items-start
         grid-cols-[min-content_1fr_min-content]
         lg:grid-cols-[1fr_4fr_1fr]
         grid-rows-[5rem_1fr_1.5rem]
